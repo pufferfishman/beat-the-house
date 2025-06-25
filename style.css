@@ -13,7 +13,8 @@ black spades
 	font-weight: 400;
 	font-style: normal;
 	color: #FEF9EF;
- }
+	box-sizing: border-box;
+}
 
 body {
 	background-color: #023020;
@@ -21,42 +22,94 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
 }
 
 #title {
 	font-size: 64px;
+	margin-top: 20px;
 }
 
 #subtitle {
 	font-size: 24px;
+	margin-bottom: 20px;
 }
 
 #gameContainer {
 	width: 700px;
 	height: 700px;
-
 }
 
-#dealerCards {
+#dealerCards,
+#playerCards {
 	width: 700px;
 	height: 350px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 .card {
 	width: 200px;
 	height: 280px;
+	perspective: 1000px;
+	margin: -40%;
+	cursor: pointer;
+}
+
+.card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s;
+	transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+	transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 	border-radius: 15px;
+	border: solid black 5px;
+	backface-visibility: hidden;
+}
+
+.card-front {
 	background-color: #FEF9EF;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 10px;
+}
+
+.card-back {
+	background-color: #333;
+	transform: rotateY(180deg);
 }
 
 .rank {
 	color: black;
 	font-size: 50px;
-	margin: 0px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	width: 50px;
-	height: 50px;
+	height: 60px;
+}
+
+.suit {
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	background-color: #BA1B1D;
+	margin: 5px;
+	margin-top: -5px;
 }
