@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap');
+
+/*
+#0496FF blue diamonds
+black spades
+#2FBF71 green clubs
+#FEF9EF white
+#BA1B1D red hearts
+*/
+
+* {
+	font-family: "Comfortaa", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: #FEF9EF;
+ }
+
+body {
+	background-color: #023020;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#title {
+	font-size: 64px;
+}
+
+#subtitle {
+	font-size: 24px;
+}
+
+#gameContainer {
+	width: 700px;
+	height: 700px;
+
+}
+
+#dealerCards {
+	width: 700px;
+	height: 350px;
+}
+
+.card {
+	width: 200px;
+	height: 280px;
+	border-radius: 15px;
+	background-color: #FEF9EF;
+}
+
+.rank {
+	color: black;
+	font-size: 50px;
+	margin: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+}
