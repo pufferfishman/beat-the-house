@@ -29,7 +29,7 @@ body {
 
 #title {
 	font-size: 64px;
-	margin-top: 20px;
+	margin-top: -50px;
 }
 
 #subtitle {
@@ -45,7 +45,7 @@ body {
 #dealerCards,
 #playerCards {
 	width: 700px;
-	height: 350px;
+	height: 300px;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -56,7 +56,7 @@ body {
 	height: 280px;
 	perspective: 1000px;
 	margin: -40%;
-	cursor: pointer;
+	cursor: default;
 }
 
 .card-inner {
@@ -86,11 +86,11 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 10px;
+	padding: 0px;
 }
 
 .card-back {
-	background-color: #333;
+	background-color: #222;
 	transform: rotateY(180deg);
 }
 
@@ -109,7 +109,119 @@ body {
 	width: 30px;
 	height: 30px;
 	border-radius: 100%;
-	background-color: #BA1B1D;
-	margin: 5px;
+	margin: 10px;
 	margin-top: -5px;
+}
+
+#deck {
+	position: absolute;
+	transform: translate(750px, -500px);
+	width: 200px;
+	height: 280px;
+	cursor: default;
+	background-color: #222;
+}
+
+.ghostCard {
+	width: 200px;
+	height: 280px;
+	perspective: 1000px;
+	margin: -40%;
+	cursor: default;
+}
+
+.h {
+	background-color: #BA1B1D;
+}
+
+.s {
+	background-color: black;
+}
+
+.c {
+	background-color: #4C934C;
+}
+
+.d {
+	background-color: #086788;
+}
+
+.rj {
+	transform: translate(0px, -5px);
+}
+
+.rq {
+	transform: translate(0px, -3px);
+}
+
+#controlsContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 700px;
+  height: 100px; /* or a fixed height if you want */
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid #222 2.5px;
+}
+
+#deal {
+	margin: 0px;
+	height: 85px;
+}
+
+.screen {
+  width: 100px;
+  height: 85px;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: solid #222 2.5px;
+  background-color: #111;
+  
+}
+
+.action {
+	font-size: 20px;
+	line-height: 1.6;
+}
+
+.outcome {
+	height: 40px;
+	font-size: 13px;
+}
+
+#playerTotal {
+	transform: translate(750px, -175px);
+	position: absolute;
+}
+
+#dealerTotal {
+	transform: translate(750px, -625px);
+	position: absolute;
 }
