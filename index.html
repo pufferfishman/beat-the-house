@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Blackjack Trainer</title>
+	<title>beat the house</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,29 +15,41 @@
 	<div id="gameContainer">
 		<div id="dealerCards">
 		</div>
-		<div id="playerCards">
-			<div class="card" onclick="this.classList.toggle('flipped')">
-				<div class="card-inner">
-					<div class="card-front">
-						<div class="rank">7</div>
-						<div class="suit"></div>
-					</div>
-					<div class="card-back"></div>
-				</div>
+		
+		<div id="controlsContainer">
+			<div class="buttonGroup">
+				<button class="button" id="deal" onclick="deal()">Deal</button>
 			</div>
-			<div class="card" onclick="this.classList.toggle('flipped')">
-				<div class="card-inner">
-					<div class="card-front">
-						<div class="rank">7</div>
-						<div class="suit"></div>
-					</div>
-					<div class="card-back"></div>
-				</div>
+			<div class="buttonGroup">
+				<button class="button" id="hit" onclick="hit()">Hit</button>
+				<button class="button" id="stand" onclick="stand()">Stand</button>
+			</div>
+			<div class="buttonGroup">
+				<button class="button" id="double" onclick="double()">Double</button>
+				<button class="button" id="split" onclick="split()">Split</button>
+			</div>
+			<div class="buttonGroup">
+				<div class="screen action" id="playerAction">You: Double</div>
+			</div>
+			<div class="buttonGroup">
+				<div class="screen action" id="correctAction">Correct: Double</div>
+			</div>
+			<div class="buttonGroup">
+				<div class="screen outcome" id="totals">19 against 26</div>
+				<div class="screen outcome" id="outcome">Dealer busts!</div>
 			</div>
 		</div>
+
+		<div id="playerCards">
+		</div>
+		
+		<div class="screen" id="playerTotal"></div>
+		<div class="screen" id="dealerTotal"></div>
+
+		<div id="deck"></div>
 	</div>
 
-	</div>
+
 	<script src="script.js"></script>
 </body>
 
