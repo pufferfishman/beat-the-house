@@ -2,13 +2,19 @@ let dealerHand;
 let playerHand;
 let playerCards = document.getElementById("playerCards");
 let dealerCards = document.getElementById("dealerCards");
+let dealB = document.getElementById("deal");
+let hitB = document.getElementById("hit");
+let standB = document.getElementById("stand");
+let doubleB = document.getElementById("double");
+let splitB = document.getElementById("split");
+let playerActionDisplay = document.getElementById("playerAction");
+let correctActionDisplay = document.getElementById("correctAction");
+let totalsDisplay = document.getElementById("totals");
+let outcomeDisplay = document.getElementById("outcome");
 let dealerRevealed;
 let deck;
 let doubled;
 let turn;
-let hardTotals = [
-
-]
 
 setup();
 
@@ -19,30 +25,47 @@ function setup() {
 	dealerHand = [];
 	playerHand = [];
 	purgeCards();
+	toggle(hitB, true);
+	toggle(standB, true);
+	toggle(doubleB, true);
+	toggle(splitB, true);
 	deck = [
 		"2c", "3c", "4c", "5c", "6c", "7c", "8c", "9c", "tc", "jc", "qc", "kc", "ac",
 		"2h", "3h", "4h", "5h", "6h", "7h", "8h", "9h", "th", "jh", "qh", "kh", "ah",
 		"2s", "3s", "4s", "5s", "6s", "7s", "8s", "9s", "ts", "js", "qs", "ks", "as",
 		"2d", "3d", "4d", "5d", "6d", "7d", "8d", "9d", "td", "jd", "qd", "kd", "ad"
 	];
+	deal();
 }
 
 function deal() {
+	toggle(dealB, true);
+	toggle(hitB, false);
+	toggle(standB, false);
+	toggle(doubleB, false);
+	toggle(splitB, true);
+
 	deck = shuffle(deck);
-	let first = deck.shift()
+
+	let first = deck.shift();
 	playerHand.push(first);
-	dealCard(first, "player");
 
-	let second = deck.shift()
+	let second = deck.shift();
 	dealerHand.push(second);
-	dealCard(second, "dealer");
 
-	let third = deck.shift()
+	let third = deck.shift();
 	playerHand.push(third);
-	dealCard(third, "player");
 
-	let fourth = deck.shift()
+	let fourth = deck.shift();
 	dealerHand.push(fourth);
+
+	if (first.charAt(0) == third.charAt(0)) {
+		toggle(splitB, false);
+	}
+
+	dealCard(first, "player");
+	dealCard(second, "dealer");
+	dealCard(third, "player");
 	dealCard(fourth, "dealer", true);
 
 	if (updateTotals()[1] == 21 && updateTotals()[3] !== 21) {
@@ -57,13 +80,22 @@ function blackjack(person) {
 
 }
 
+function endHand(blackjack) {
+	displayOutcome(blackjack);
+	toggle(dealB, false);
+	toggle(hitB, true);
+	toggle(standB, true);
+	toggle(doubleB, true);
+	toggle(splitB, true);
+}
+
 function hit() {
 	let card = deck.shift();
 
 	playerHand.push(card);
 	dealCard(card, "player");
 	if (updateTotals()[0] > 21) {
-		bust();
+		bust("player");
 	}
 	checkAction("h");
 }
@@ -72,14 +104,16 @@ function hitDealer() {
 	let card = deck.shift();
 
 	dealerHand.push(card);
-	dealCard(card, "player");
+	dealCard(card, "dealer");
 	if (updateTotals()[2] > 21) {
-	
+		bust()
 	}
 }
 
 function stand() {
 	turn = "dealer";
+	dealerRevealed = true;
+	checkAction("s");
 }
 
 function double() {
@@ -87,18 +121,18 @@ function double() {
 
 	playerHand.push(card);
 	dealCard(card, "player");
+	turn = "dealer";
+	checkAction("d");
 	if (updateTotals()[0] > 21) {
 		bust();
 	}
-	turn = "dealer";
-	checkAction("d");
 }
 
 function split() {
 }
 
 function bust() {
-
+	endHand();
 }
 
 function checkAction(action) {
@@ -158,7 +192,7 @@ function checkAction(action) {
 				} else {
 					correct = "h"
 				}
-			} else if (playerHand >= 17) { // 17-21
+			} else if (playerHard >= 17) { // 17-21
 				correct = "s";
 			}
 			break;
@@ -197,15 +231,79 @@ function checkAction(action) {
 			break;
 
 		case ("splits"):
+			if (firstCard == 2) { // 2,2
+				if (/^[2-7]/.test(dealerCard)) {
+					correct = "p";
+				} else {
+					correct = "h";
+				}
+			} else if (firstCard == 3) { // 3,3
+				if (/^[2-8]/.test(dealerCard)) {
+					correct = "p";
+				} else {
+					correct = "h";
+				}
+			} else if (firstCard == 4) { // 4,4
+				if (/^[4-6]/.test(dealerCard)) {
+					correct = "p";
+				} else {
+					correct = "h";
+				}
+			} else if (firstCard == 5) { // 5,5
+				if (/^[2-9]/.test(dealerCard)) {
+					correct = "d";
+				} else {
+					correct = "h";
+				}
+			} else if (firstCard == 6) { // 6,6
+				if (/^[2-7]/.test(dealerCard)) {
+					correct = "p";
+				} else {
+					correct = "h";
+				}
+			} else if (firstCard == 7) { // 7,7
+				if (/^[2-8]/.test(dealerCard)) {
+					correct = "p";
+				} else if (/^[9a]/.test(dealerCard)){
+					correct = "h";
+				} else {
+					correct = "s";
+				}
+			} else if (firstCard == 8 || firstCard == "a") { // 8,8
 
+			}
 
 			break;
 	}
 
+	console.log(action, correct)
+
 	if (action == correct) {
+		playerActionDisplay.innerHTML = "You: <br><span class='green'>"+actionToFull(action)+"</span>";
+		correctActionDisplay.innerHTML = "Correct: <br><span class='green'>"+actionToFull(correct)+"</span>";
 		return [true, action, correct];
 	} else {
+		playerActionDisplay.innerHTML = "You: <br><span class='red'>"+actionToFull(action)+"</span>";
+		correctActionDisplay.innerHTML = "Correct: <br><span class='green'>"+actionToFull(correct)+"</span>";
 		return [false, action, correct];
+	}
+}
+
+function actionToFull(action) {
+	if (action == "h") {
+		return "Hit";
+	}
+
+	if (action == "s") {
+		return "Stand";
+	}
+
+	if (action == "d") {
+		return "Double";
+	}
+
+	if (action == "p") {
+		return "Split";
 	}
 }
 
@@ -249,8 +347,8 @@ function updateTotals() {
 
 	document.getElementById("playerTotal").innerHTML = playerDisplay;
 
-	if (dealerRevealed) {
-		return ([playerTotal, null]);
+	if (!dealerRevealed) {
+		return ([playerTotal, playerSoftTotal, null, null]);
 	}
 
 	for (let i = 0; i < dealerHand.length; i++) {
@@ -339,4 +437,45 @@ function dealCard(card, person, flipped) {
 	} else if (person == "dealer") {
 		dealerCards.appendChild(newCard);
 	}
+}
+
+function toggle(button, disabled) {
+	console.log("disable");
+	if (disabled) {
+		console.log("successfully disabled");
+		button.disabled = true;
+	} else {
+		button.disabled = false;
+	}
+}
+
+function displayOutcome(blackjack) {
+	let playerHard = updateTotals()[0];
+	let dealerHard = updateTotals()[2];
+	let totals;
+	let outcome;
+
+	if (blackjack == "player") {
+		totals = "Blackjack!"
+		outcome = "Player wins!";
+		return;
+	} else if (blackjack == "dealer") {
+		totals = "Blackjack!"
+		outcome = "Dealer wins!";
+		return;
+	} else if (playerHard > dealerHard) {
+		outcome = "Player wins!";
+		return;
+	} else if (playerHard < dealerHard) {
+		outcome = "Dealer wins!";
+		return;
+	} else if (playerHard = dealerHard) {
+		outcome = "Push!";
+		return;
+	}
+
+	totals = playerHard + " against " + dealerHard;
+
+	totalsDisplay.innerHTML = totals;
+	outcomeDisplay.innerHTML = outcome;
 }
