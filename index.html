@@ -18,7 +18,7 @@
 		
 		<div id="controlsContainer">
 			<div class="buttonGroup">
-				<button class="button" id="deal" onclick="deal()">Deal</button>
+				<button class="button" id="deal" onclick="setup()">Deal</button>
 			</div>
 			<div class="buttonGroup">
 				<button class="button" id="hit" onclick="hit()">Hit</button>
@@ -29,14 +29,14 @@
 				<button class="button" id="split" onclick="split()">Split</button>
 			</div>
 			<div class="buttonGroup">
-				<div class="screen action" id="playerAction">You: Double</div>
+				<div class="screen action" id="playerAction">You: <br><span class="red"></span></div>
 			</div>
 			<div class="buttonGroup">
-				<div class="screen action" id="correctAction">Correct: Double</div>
+				<div class="screen action" id="correctAction">Correct: <br><span class="green"></span></div>
 			</div>
 			<div class="buttonGroup">
-				<div class="screen outcome" id="totals">19 against 26</div>
-				<div class="screen outcome" id="outcome">Dealer busts!</div>
+				<div class="screen outcome" id="totals"></div>
+				<div class="screen outcome" id="outcome"></div>
 			</div>
 		</div>
 
