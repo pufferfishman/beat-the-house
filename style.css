@@ -155,33 +155,33 @@ body {
 }
 
 #controlsContainer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 700px;
-  height: 100px; /* or a fixed height if you want */
-  gap: 10px;
-  padding-left: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 700px;
+	height: 100px;
+	gap: 10px;
 }
 
 .buttonGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0px;
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
 }
 
 .button {
-  width: 100px;
-  height: 40px;
-  border-radius: 5px;
-  color: black;
-  font-size: 24px;
-  font-weight: 800;
-  margin: 2.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid #222 2.5px;
+	width: 110px;
+	height: 40px;
+	border-radius: 5px;
+	color: black;
+	font-size: 24px;
+	font-weight: 800;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: solid #222 2.5px;
+	margin: 2px;
+	cursor: pointer;
 }
 
 #deal {
@@ -190,30 +190,34 @@ body {
 }
 
 .screen {
-  width: 100px;
-  height: 85px;
-  border-radius: 5px;
-  color: white;
-  font-size: 24px;
-  font-weight: 800;
-  margin: 2.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: solid #222 2.5px;
-  background-color: #111;
-  
+	width: 110px;
+	height: 85px;
+	border-radius: 5px;
+	color: white;
+	font-size: 24px;
+	font-weight: 800;
+	margin: 2px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	border: solid #222 2.5px;
+	background-color: #111;
+
 }
 
 .action {
 	font-size: 20px;
 	line-height: 1.6;
+	padding-top: 8px;
+	display: block;
+	word-break: break-word;
 }
 
 .outcome {
+	width: 130px;
 	height: 40px;
-	font-size: 13px;
+	font-size: 16px;
 }
 
 #playerTotal {
@@ -224,4 +228,17 @@ body {
 #dealerTotal {
 	transform: translate(750px, -625px);
 	position: absolute;
+}
+
+.red {
+	color: #BA1B1D;
+}
+
+.green {
+	color: #4C934C;
+}
+
+.button:disabled {
+	background-color: #666;
+	cursor: default;
 }
