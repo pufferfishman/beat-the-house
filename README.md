@@ -1,4 +1,4 @@
-# beat-the-house
+# beat the house
 This is a simple Blackjack Basic Strategy trainer tool. It deals out the cards and you can make actions, after each action it will tell you what the correct action was. The text will also become red or green depending on if you did the correct action or not.
 
 The correct actions are based off the basic strategy chart on [wizardofodds.com](https://wizardofodds.com/games/blackjack/strategy/calculator/).
