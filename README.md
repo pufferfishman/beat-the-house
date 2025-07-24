@@ -11,7 +11,7 @@ No surrender
 The split feature in the trainer is currently not working, but will be implemented very soon.
 
 [Link to project](https://pufferfishman.github.io/beat-the-house/)
-[image](<img width="1000" height="800" alt="Screenshot 2025-07-24 192522" src="https://github.com/user-attachments/assets/1e05d971-6bf5-453e-a06d-b1a94c0efd2f" />)
+<img width="1000" height="800" alt="Screenshot 2025-07-24 192522" src="https://github.com/user-attachments/assets/1e05d971-6bf5-453e-a06d-b1a94c0efd2f" />
 
 ## Challenges I Faced
 I faced a few challenges in the 15 hours that I spent developing this project.
