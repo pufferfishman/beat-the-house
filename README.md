@@ -12,7 +12,7 @@ The split feature in the trainer is currently not working, but will be implement
 
 [Link to project](https://pufferfishman.github.io/beat-the-house/)
 
-![image]("https://github.com/user-attachments/assets/39c5270e-2cbe-47f6-b1fe-594b2d60ab93")
+![image](<img width="1742" height="1666" alt="Screenshot 2025-07-18 144335" src="https://github.com/user-attachments/assets/ac141c25-8d9d-4fcd-9994-62c3a68b2222"/>)
 
 ## Challenges I Faced
 I faced a few challenges in the 15 hours that I spent developing this project.
