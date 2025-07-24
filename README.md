@@ -4,8 +4,11 @@ This is a simple Blackjack Basic Strategy trainer tool. It deals out the cards a
 The correct actions are based off the basic strategy chart on [wizardofodds.com](https://wizardofodds.com/games/blackjack/strategy/calculator/).
 The ruleset of the game is as follows:
 Single deck
+
 Dealer hits on soft 17
+
 Double after split allowed
+
 No surrender
 
 The split feature in the trainer is currently not working, but will be implemented very soon.
